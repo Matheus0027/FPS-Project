@@ -6,6 +6,8 @@ public class PlayerShooting : MonoBehaviour
 {
     public Gun gun;
     private bool isHoldingShoot;
+    public Transform gunHolder;
+
     void OnShoot()
     {
         isHoldingShoot = true;
