@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fecb048d8e49694cb0cfbdf602da84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
+  droppedWeapon: {fileID: 5786097810451525583, guid: 25e5875c43fff8f4fa9b75ca4830cef3, type: 3}
   reloadTime: 1
   fireRate: 0.15
   maxSize: 20
