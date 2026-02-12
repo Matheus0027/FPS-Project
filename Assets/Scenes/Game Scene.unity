@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 28449639}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.9, y: 0, z: -21.9}
+  m_LocalPosition: {x: -17.9, y: -2.32, z: -21.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -231,7 +231,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!136 &92232912
 CapsuleCollider:
@@ -322,7 +322,7 @@ Transform:
   m_GameObject: {fileID: 92232910}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.86, y: -1.506, z: -11.68}
+  m_LocalPosition: {x: -0.86, y: -1.506, z: -7.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -347,7 +347,7 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
@@ -370,11 +370,16 @@ MonoBehaviour:
   currentPointIndex: 0
   currentTarget: {x: 0, y: 0, z: 0}
   positionThreshold: 2
-  idleTime: 1
+  idleTime: 3
   attackDistance: 5
-  maxVisionDistance: 20
+  maxVisionDistance: 15
   minimumChasingHealth: 30
   patrolPoints: []
+  bulletPrefab: {fileID: 5341742223406746680, guid: 9c3cddd6060b7cc4eadfb9cefcf6e7db, type: 3}
+  bulletSpawnPoint: {fileID: 1897056500279480355}
+  bloom: 0.75
+  fireRate: 0.5
+  weaponFlash: {fileID: 3264770936365981261, guid: bcd95134a2cf1474ea487097278f5333, type: 3}
   state: 0
 --- !u!1001 &169021633
 PrefabInstance:
@@ -390,7 +395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738456080911321149, guid: 655a3e49f9ef8db49bb65ce8769d0eb6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.8885157
+      value: 16.3
       objectReference: {fileID: 0}
     - target: {fileID: 5738456080911321149, guid: 655a3e49f9ef8db49bb65ce8769d0eb6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -573,7 +578,7 @@ Transform:
   m_GameObject: {fileID: 235328828}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.75, y: -1.483, z: -12.38}
+  m_LocalPosition: {x: -9.6, y: -1.483, z: 14.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1499,7 +1504,7 @@ Transform:
   m_GameObject: {fileID: 1707488819}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.04, z: 0}
+  m_LocalPosition: {x: -18.81, y: -1.04, z: 34.02}
   m_LocalScale: {x: 5, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1519,7 +1524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6559362985659250037, guid: 25e5875c43fff8f4fa9b75ca4830cef3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.7884417
+      value: 19.35
       objectReference: {fileID: 0}
     - target: {fileID: 6559362985659250037, guid: 25e5875c43fff8f4fa9b75ca4830cef3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1527,7 +1532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6559362985659250037, guid: 25e5875c43fff8f4fa9b75ca4830cef3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4234629
+      value: 18.66
       objectReference: {fileID: 0}
     - target: {fileID: 6559362985659250037, guid: 25e5875c43fff8f4fa9b75ca4830cef3, type: 3}
       propertyPath: m_LocalRotation.w
