@@ -46,7 +46,7 @@ public class PlayerLook : MonoBehaviour
     }
 
     // Apply shake effect each frame
-    private void HandleShake()
+    public void HandleShake()
     {
         if (shakeDuration > 0)
         {

@@ -166,6 +166,7 @@ MonoBehaviour:
   reloadTime: 1
   fireRate: 0.3
   maxSize: 10
+  ShootingSFX: {fileID: 8300000, guid: fe8d74b25eb0b1d47b4bfb1b94e4d7bc, type: 3}
   bullet: {fileID: 5341742223406746680, guid: 9c3cddd6060b7cc4eadfb9cefcf6e7db, type: 3}
   bulletSpawnPoint: {fileID: 1830984281775881329}
   recoilDistance: 0.01

@@ -34,6 +34,8 @@ public class Enemy : MonoBehaviour
 
     private float lastShotTime = 0;
 
+    public AudioClip ShootingSFX;
+
     // Enemy states
     public enum State { Idle, Patrolling, Chasing, Attacking }
     public State state = State.Idle;             // Default state is Idle
@@ -95,7 +97,7 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (!this.enabled) return; // If enemy is dead, do nothing
-        if (collision.gameObject.CompareTag("damage"))
+        if (collision.gameObject.tag == ("damage"))
         {
             health -= 10;           // Lose 10 health per hit
             if (health <= 0)
@@ -111,14 +113,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        if (!this.enabled) return;         // Stop all actions if dead
-        rb.freezeRotation = false;         // Allow enemy to tip over
-        transform.rotation = Quaternion.Euler(
-            transform.rotation.x,
-            transform.rotation.y,
-            transform.rotation.z + 5f // Slight rotation on Z so enemy tips over
-        );
-        this.enabled = false;              // Disable script
+        Destroy(gameObject);
     }
 
     IEnumerator Blink()
@@ -236,7 +231,7 @@ public class Enemy : MonoBehaviour
 
         SetLastKnownPlayerPosition();
     }
-    private void Shoot()
+    public void Shoot()
     {
         // Only shoot if enough time has passed since last shot
         if (Time.time > lastShotTime + fireRate)
@@ -254,18 +249,13 @@ public class Enemy : MonoBehaviour
             float randomPitch = Random.Range(-currentInaccuracy, currentInaccuracy);
             // Apply inaccuracy and rotate bullet towards player
             bulletRotation *= Quaternion.Euler(randomPitch, randomYaw + 90f, 0f);
+
+            AudioManager.instance.PlaySFX(ShootingSFX, 0.5f);
+
             // Spawn the bullet prefab at the spawn point with calculated rotation
-            Instantiate(
-            bulletPrefab,
-            bulletSpawnPoint.position,
-            bulletRotation
-            );
+            Instantiate(bulletPrefab,bulletSpawnPoint.position,bulletRotation);
             // Spawn weapon flash effect at the spawn point
-            Instantiate(
-            weaponFlash,
-            bulletSpawnPoint.position,
-            bulletSpawnPoint.rotation
-            );
+            Instantiate(weaponFlash,bulletSpawnPoint.position,bulletSpawnPoint.rotation);
             // Record the time of this shot
             lastShotTime = Time.time;
         }

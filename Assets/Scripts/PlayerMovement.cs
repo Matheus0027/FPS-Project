@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,10 +17,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput; //WASD + arrow keys
     private bool isGrounded;
 
+    public AudioClip footStepSFX;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        StartCoroutine(PlayFootStep());
     }
 
     // Update is called once per frame
@@ -52,8 +57,8 @@ public class PlayerMovement : MonoBehaviour
         direction = direction.normalized;
 
         rb.linearVelocity = new Vector3(direction.x*moveSpeed, rb.linearVelocity.y, direction.z*moveSpeed);
-    }
-    
+    }  
+
     void CheckGround()
     {
         if (groundCheck == null)        // Safety: require a groundCheck transform
@@ -64,5 +69,16 @@ public class PlayerMovement : MonoBehaviour
 
         // True if sphere overlaps any collider on groundMask within groundDistance
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+    }
+    IEnumerator PlayFootStep()
+    {
+        while (true)
+        {
+            if (rb.linearVelocity.magnitude > 0.1f && isGrounded)
+            {
+                AudioManager.instance.PlaySFX(footStepSFX);
+            }
+            yield return new WaitForSeconds(0.3f);
+        }
     }
 }
